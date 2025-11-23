@@ -3,153 +3,367 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>DaVinci Resolve</title>
+  <title>DaVinci Resolve | Aarya Softwares</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- ICONS (FontAwesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* --- COLOR PALETTE (Red & Black) --- */
+    :root {
+      --bg-black: #050505;
+      --card-black: #0a0a0a;
+      --neon-red: #ff0000;
+      --text-main: #ff4d4d;
+      --text-dim: #990000;
+      --border-red: #4d0000;
+      --border-highlight: #ff0000;
+    }
+
+    /* --- CUSTOM SCROLLBAR --- */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: var(--border-red); border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--neon-red); }
+
+    /* --- TEXT SELECTION --- */
+    ::selection { background: var(--neon-red); color: #000; }
+
+    /* --- GENERAL SETUP --- */
     body {
-      background:#000;
-      color:#b30000;
-      margin:0;
-      padding:0;
-      font-family:'Unbounded', cursive;
-      overflow-x:hidden;
+      background-color: #000;
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+      font-family: 'Unbounded', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      
+      /* Subtle Background Texture */
+      background-image: 
+        radial-gradient(circle at 50% 10%, rgba(50, 0, 0, 0.2), transparent 60%),
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
     }
-    html, body { width:100%; max-width:100%; }
+    
+    html { width: 100%; height: 100%; scroll-behavior: smooth; }
 
-    /* NAVBAR */
-    .navbar {
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      background:#0d0d0d;
-      padding:14px 0;
-      border-bottom:1px solid #330000;
-      position:sticky;
-      top:0;
-      z-index:100;
+    /* --- NAVIGATION CONTAINER --- */
+    .nav-wrapper {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-red);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 0;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     }
-    .navbar a {
-      color:#b30000;
-      text-decoration:none;
-      transition:0.3s;
-      font-weight:500;
-    }
-    .navbar a:hover{ color:#ff4c4c; }
 
-    /* HEADER IMAGE */
+    /* Top Row: Utilities */
+    .nav-top {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 10px;
+    }
+
+    .nav-top a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s ease;
+    }
+    
+    .nav-top a i { color: var(--neon-red); font-size: 1.1rem; transition: transform 0.3s ease; }
+    .nav-top a:hover { color: var(--neon-red); text-shadow: 0 0 8px var(--neon-red); }
+    .nav-top a:hover i { transform: scale(1.2) rotate(5deg); text-shadow: 0 0 10px var(--neon-red); }
+
+    /* Separator */
+    .nav-separator {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--border-red), transparent);
+      margin: 8px auto 12px auto;
+      opacity: 0.8;
+    }
+
+    /* Bottom Row: Software Links */
+    .nav-bottom {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      font-size: 0.75rem;
+    }
+
+    .nav-bottom a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s ease;
+      position: relative;
+    }
+
+    /* Hover effect with underline */
+    .nav-bottom a::after {
+      content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0;
+      background-color: var(--neon-red); transition: width 0.3s;
+    }
+    .nav-bottom a:hover { color: var(--text-main); text-shadow: 0 0 5px var(--neon-red); }
+    .nav-bottom a:hover::after { width: 100%; }
+
+    /* --- HEADER SECTION --- */
+    .header-section {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px; 
+      max-width: 1100px; 
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+      gap: 40px;
+    }
+
+    /* Text Wrapper */
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .header-logo-link { display: inline-block; position: relative; }
+
     .header-image {
-      width:100%;
-      max-width:280px;
-      display:block;
-      margin:15px auto 10px auto;
-      border-radius:6px;
-      border:1px solid #660000;
+      height: 140px;
+      width: auto;
+      filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
+      transition: transform 0.3s ease;
+      border-radius: 8px;
     }
+    
+    .header-image:hover { transform: scale(1.05); }
 
-    /* TITLE */
     h1 {
-      text-align:center;
-      font-size:2rem;
-      margin:20px 0 35px 0;
-      font-family:'Orbitron', sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0;
+      line-height: 1;
+      white-space: nowrap; 
+      color: var(--neon-red); 
+      text-shadow: 0 0 10px var(--neon-red), 0 0 30px rgba(255, 0, 0, 0.6);
+    }
+    
+    .subtitle {
+      color: var(--text-main);
+      font-family: 'Rajdhani', sans-serif;
+      margin-top: 5px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.9;
+      padding-left: 12px;
+      border-left: 3px solid var(--neon-red);
+      display: inline-block;
     }
 
-    /* CONTAINER */
+    /* Responsive Header */
+    @media (max-width: 768px) {
+      .header-section { flex-direction: column-reverse; gap: 30px; text-align: center; }
+      .header-text { align-items: center; text-align: center; }
+      h1 { white-space: normal; font-size: 2rem; }
+      .subtitle { border: none; border-bottom: 2px solid var(--neon-red); padding: 0 0 10px 0; }
+      .header-image { height: 100px; }
+    }
+
+    /* --- GRID CONTAINER --- */
     .container {
-      max-width:500px;
-      margin:auto;
-      display:flex;
-      flex-direction:column;
-      gap:35px;
-      padding:0 15px 40px;
-      box-sizing:border-box;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 60px 20px;
+      display: grid;
+      /* CHANGED: Use 2 columns to make the cards larger and fill the row */
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 25px;
+      box-sizing: border-box;
     }
 
-    /* CARD */
+    /* --- CARD --- */
     .card {
-      background:rgba(17,17,17,0.75);
-      backdrop-filter:blur(6px);
-      padding:22px;
-      border:1px solid #660000;
-      border-radius:12px;
-      box-shadow:0 0 10px #330000;
-      transition:0.3s;
-      text-align:center;
-    }
-    .card:hover{
-      transform:translateY(-3px);
-      box-shadow:0 0 16px #b30000;
+      background: linear-gradient(145deg, var(--card-black), #0f0000);
+      border: 1px solid var(--border-red);
+      border-radius: 12px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 150px; 
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
     }
 
-    /* BUTTON */
+    .card::after {
+      content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 0, 0, 0.1), transparent);
+      transform: skewX(-25deg); transition: 0.5s; pointer-events: none;
+    }
+    .card:hover::after { left: 150%; }
+
+    .card-content { text-align: left; }
+
+    .card h2 {
+      margin: 0 0 8px 0;
+      color: var(--neon-red);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: text-shadow 0.3s ease;
+    }
+
+    .card p {
+      color: var(--text-main);
+      font-size: 0.85rem;
+      margin: 0;
+      line-height: 1.5;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-container { margin-top: 20px; display: flex; gap: 10px; justify-content: flex-start; }
+
     .btn {
-      padding:8px 12px;
-      background:#b30000;
-      color:#fff;
-      text-decoration:none;
-      border-radius:6px;
-      font-weight:bold;
-      transition:0.3s;
-      font-size:0.9rem;
-      display:inline-block;
-      min-width:110px;
-      text-align:center;
-      margin-top:8px;
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--neon-red);
+      border: 1px solid var(--border-red);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: 5px;
     }
-    .btn:hover { background:#ff4c4c; }
+    .btn i { font-size: 0.8em; } 
 
-    /* 📱 MOBILE OPTIMIZATION */
-    @media(max-width:600px){
-      h1{font-size:1.7rem !important;}
-      .container{max-width:92% !important; padding:5px !important;}
-      .card{padding:20px !important;}
-      .btn{width:auto !important; display:inline-block !important; margin:10px auto !important;}
-      .header-image{max-width:240px !important;}
-      .navbar{flex-wrap:wrap; gap:15px;}
+    /* HOVER STATE: Reactor Glow */
+    .card:hover { 
+      transform: translateY(-5px); 
+      border-color: var(--border-highlight);
+      box-shadow: 0 15px 35px rgba(20, 0, 0, 0.6); 
+      background: linear-gradient(145deg, #1a0505, #0f0000);
     }
+    .card:hover h2 { text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+    .card:hover p { opacity: 1; }
+    .btn:hover { background: var(--neon-red); color: #000; box-shadow: 0 0 15px var(--neon-red); border-color: var(--neon-red); }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center; padding: 40px 0; color: var(--text-dim); 
+      font-size: 0.7rem; margin-top: auto; border-top: 1px solid #1a0000;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) { .container { grid-template-columns: 1fr; } } /* 1 col on tablet/mobile */
+    @media (max-width: 600px) { .container { grid-template-columns: 1fr; } .header-image { height: 50px; } }
   </style>
 </head>
 
 <body>
-<!-- NAVBAR -->
-  <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="adobe.html">Adobe</a>
-    <a href="plugins.html">Plugins</a>
-    <a href="capcut.html">CapCut</a>
-    <a href="davinci.html">DaVinci</a>
+
+  <!-- NAVIGATION WRAPPER -->
+  <div class="nav-wrapper">
+    <!-- Top Row -->
+    <div class="nav-top">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="#"><i class="fas fa-circle-question"></i> FAQ</a>
+      <a href="#"><i class="fab fa-discord"></i> Discord</a>
+      <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+    </div>
+    <!-- Separator -->
+    <div class="nav-separator"></div>
+    <!-- Bottom Row -->
+    <div class="nav-bottom">
+      <a href="adobe.html">Adobe</a>
+      <a href="plugins.html">Plugins</a>
+      <a href="capcut.html">CapCut</a>
+      <a href="davinci.html" style="color:var(--neon-red)">DaVinci</a>
+      <a href="#">Final Cut</a>
+      <a href="#">FL Studio</a>
+    </div>
   </div>
 
-  <!-- LOGO -->
-  <img src="logo.png" class="header-image" alt="Aarya Logo">
-
-  <!-- TITLE -->
-  <h1>DaVinci Resolve</h1>
-
-  <!-- CONTENT -->
-  <div class="container">
-
-    <div class="card">
-      <h2>DaVinci Resolve Download</h2>
-      <a href="https://drive.google.com/file/d/1Y37IVZiPswaJ_9XweiyKdfYsCyIIlEMb/view?usp=drivesdk" class="btn" target="_blank">Download</a>
-      <p>All-in-one solution for editing, color grading, Fusion VFX and Fairlight audio.</p>
+  <!-- HEADER -->
+  <div class="header-section">
+    <!-- Text Group (Left) -->
+    <div class="header-text">
+      <h1>DaVinci Resolve</h1>
+      <div class="subtitle">Professional Color Grading & Editing</div>
     </div>
 
+    <!-- Logo (Right) -->
+    <a href="index.html" class="header-logo-link">
+      <img src="https://raw.githubusercontent.com/aaryakrishna/softwares/main/logo.png" class="header-image" alt="Aarya Logo" draggable="false">
+    </a>
+  </div>
+
+  <!-- CONTENT GRID -->
+  <div class="container">
+    
+    <!-- Card 1: Download (Studio Version) -->
     <div class="card">
-      <h2>About DaVinci</h2>
-      <p>DaVinci Resolve is used in Hollywood films, commercials, music videos and OTT content pipelines for precise color and professional timelines.</p>
+      <div class="card-content">
+        <h2>DaVinci Resolve Studio</h2>
+        <p>The paid Studio version with Neural Engine, stereoscopic 3D tools, and more.</p>
+      </div>
+      <div class="btn-container">
+        <a href="https://drive.google.com/file/d/1Y37IVZiPswaJ_9XweiyKdfYsCyIIlEMb/view?usp=drivesdk" target="_blank" class="btn">
+          <i class="fas fa-download"></i> Download Studio
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: Official Free Version -->
+    <div class="card">
+      <div class="card-content">
+        <h2>DaVinci Resolve (Free)</h2>
+        <p>The world's most popular free video editor. Professional editing and color correction.</p>
+      </div>
+      <div class="btn-container">
+        <a href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" class="btn">
+          <i class="fas fa-external-link-alt"></i> Official Free Download
+        </a>
+      </div>
     </div>
 
   </div>
 
   <!-- FOOTER -->
-  <footer style="text-align:center; padding:25px; margin-top:40px; color:#660000; font-size:0.9rem; border-top:1px solid #330000;">
-    © 2025 Aarya Softwares — All Rights Reserved | v1.0.0
+  <footer>
+    © 2025 Aarya Softwares — All Rights Reserved
   </footer>
 
 </body>
