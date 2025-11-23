@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Aarya Softwares</title>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* GENERAL */
+    body {
+      background: #000;
+      color: #b30000;
+      margin: 0;
+      padding: 0;
+      font-family: 'Unbounded', cursive;
+      overflow-x: hidden;
+    }
+    html, body { width: 100%; max-width: 100%; }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: #0d0d0d;
+      padding: 14px 0;
+      border-bottom: 1px solid #330000;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar a {
+      color: #b30000;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .navbar a:hover { color: #ff4c4c; }
+
+    /* HEADER IMAGE */
+    .header-image {
+      width: 100%;
+      max-width: 280px;
+      display: block;
+      margin: 15px auto 10px auto;
+      border-radius: 6px;
+      border: 1px solid #660000;
+    }
+
+    /* TITLE */
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 35px;
+      margin-top: 10px;
+    }
+
+    /* CONTAINER */
+    .container {
+      width: 100%;              /* ✅ allow full width on mobile */
+      max-width: 500px;         /* cap width on desktop */
+      margin: auto;
+      padding: 0 15px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      box-sizing: border-box;
+    }
+
+    /* CARD */
+    .card {
+      background: rgba(17, 17, 17, 0.75);
+      backdrop-filter: blur(6px);
+      padding: 22px;
+      border: 1px solid #660000;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #330000;
+      transition: 0.3s;
+      text-align: center;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 0 16px #b30000; }
+
+    /* BUTTON */
+    .btn {
+      padding: 8px 12px;
+      background: #b30000;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+      font-size: 0.9rem;
+      display: inline-block;
+      min-width: 110px;
+      text-align: center;
+      margin-top: 8px;
+    }
+    .btn:hover { background: #ff4c4c; }
+
+    /* 📱 MOBILE OPTIMIZATION */
+    @media (max-width: 600px) {
+      .container {
+        width: 100% !important;
+        max-width: 92% !important;
+        padding: 5px !important;
+      }
+      .card { padding: 20px !important; }
+      .btn { width: auto !important; display: inline-block !important; margin: 10px auto !important; }
+      h1 { font-size: 1.7rem !important; }
+      .header-image { max-width: 240px !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="adobe.html">Adobe</a>
+    <a href="capcut.html">CapCut</a>
+    <a href="davinci.html">DaVinci</a>
+  </div>
+
+  <!-- LOGO -->
+  <img src="logo.png" class="header-image" alt="Aarya Logo">
+
+  <!-- TITLE -->
+  <h1>Aarya Softwares</h1>
+
+  <!-- CONTENT -->
+  <div class="container">
+    <div class="card">
+      <h2>Adobe Software</h2>
+      <a href="adobe.html" class="btn">View Adobe Softwares</a>
+      <p>Premiere Pro, Photoshop, After Effects & more.</p>
+    </div>
+
+    <div class="card">
+      <h2>CapCut</h2>
+      <a href="capcut.html" class="btn">Windows</a>
+      <p>Fast & easy video editor for beginners.</p>
+    </div>
+
+    <div class="card">
+      <h2>DaVinci Resolve</h2>
+      <a href="davinci.html" class="btn">Windows</a>
+      <a href="davinci.html" class="btn">Mac</a>
+      <p>Professional editing & advanced color grading.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="text-align:center; padding:25px; margin-top:40px; color:#660000; font-size:0.9rem; border-top:1px solid #330000;">
+    © 2025 Aarya Softwares — All Rights Reserved | v1.0.0
+  </footer>
+
+</body>
+</html>
